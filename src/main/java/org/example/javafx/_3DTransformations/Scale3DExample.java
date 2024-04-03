@@ -1,4 +1,4 @@
-package org.example.javafx;
+package org.example.javafx._3DTransformations;
 
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -19,10 +19,12 @@ public class Scale3DExample extends Application {
 
         // Creating a material
         PhongMaterial material = new PhongMaterial();
-        material.setDiffuseColor(Color.BLUE);
+        material.setDiffuseColor(Color.RED);
 
         // Setting material to the box
         box.setMaterial(material);
+
+
 
         // Creating a Group object
         Group root = new Group(box);
@@ -35,11 +37,11 @@ public class Scale3DExample extends Application {
         box.getTransforms().add(scale);
 
         // Creating a scene object
-        Scene scene = new Scene(root, 600, 400);
+        Scene scene = new Scene(root, 600, 500);
 
         // Setting camera
         PerspectiveCamera camera = new PerspectiveCamera();
-        camera.setTranslateZ(-300);
+        camera.setTranslateZ(-400);
 
         // Adding camera to the scene
         scene.setCamera(camera);

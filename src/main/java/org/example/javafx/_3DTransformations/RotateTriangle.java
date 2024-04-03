@@ -1,4 +1,4 @@
-package org.example.javafx;
+package org.example.javafx._3DTransformations;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
@@ -10,7 +10,7 @@ public class RotateTriangle extends JPanel {
     private static final int WIDTH = 400;
     private static final int HEIGHT = 400;
     private static final int TRIANGLE_SIZE = 200;
-    private double rotationAngle = 0;
+    private double rotationAngle = 30;
 
     public RotateTriangle() {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -32,7 +32,7 @@ public class RotateTriangle extends JPanel {
         drawTriangle(triangleGraphics, TRIANGLE_SIZE);
 
         // Create an AffineTransform for rotation
-        AffineTransform rotateTransform = AffineTransform.getRotateInstance(rotationAngle, TRIANGLE_SIZE / 2, TRIANGLE_SIZE / 2);
+        AffineTransform rotateTransform = AffineTransform.getRotateInstance(rotationAngle, (double) TRIANGLE_SIZE / 2, TRIANGLE_SIZE / 2);
 
         // Apply the rotation transformation
         AffineTransformOp rotateOp = new AffineTransformOp(rotateTransform, AffineTransformOp.TYPE_BILINEAR);
@@ -46,7 +46,7 @@ public class RotateTriangle extends JPanel {
     }
 
     private void drawTriangle(Graphics2D g2d, int size) {
-        g2d.setColor(Color.BLACK);
+        g2d.setColor(Color.CYAN);
         Polygon triangle = new Polygon();
         triangle.addPoint(0, size);
         triangle.addPoint(size / 2, 0);
@@ -58,7 +58,7 @@ public class RotateTriangle extends JPanel {
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("Rotate Triangle");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.add(new org.example.javafx.RotateTriangle());
+            frame.add(new RotateTriangle());
             frame.pack();
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
