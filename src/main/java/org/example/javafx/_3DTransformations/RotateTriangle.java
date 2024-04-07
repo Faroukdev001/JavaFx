@@ -12,6 +12,9 @@ public class RotateTriangle extends JPanel {
     private static final int TRIANGLE_SIZE = 200;
     private double rotationAngle = 30;
 
+    private final Color[] colors = new Color[]{Color.RED, Color.GREEN, Color.BLUE};
+
+
     public RotateTriangle() {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
     }
@@ -46,13 +49,20 @@ public class RotateTriangle extends JPanel {
     }
 
     private void drawTriangle(Graphics2D g2d, int size) {
-        g2d.setColor(Color.CYAN);
-        Polygon triangle = new Polygon();
-        triangle.addPoint(0, size);
-        triangle.addPoint(size / 2, 0);
-        triangle.addPoint(size, size);
+        int[] xPoints = new int[]{0, size / 2, size};
+        int[] yPoints = new int[]{size, 0, size};
+        Polygon triangle = new Polygon(xPoints, yPoints, 3);
+
+        // Create a gradient for smooth color transitions
+        GradientPaint gradient = new GradientPaint(0, 0, colors[0], size, size, colors[2]);
+        g2d.setPaint(gradient);
+
+        // Fill the triangle with colors
         g2d.fillPolygon(triangle);
     }
+
+
+
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
